@@ -1,3 +1,5 @@
+from traceback import print_tb
+
 import pandas as pd
 import pysrt
 import time
@@ -8,7 +10,7 @@ from googletrans import Translator
 from sqlalchemy import create_engine, exc
 from tqdm import tqdm
 
-from sql_tools import cprint
+from sql_tools import cprint, read_sql
 
 
 
@@ -140,7 +142,21 @@ for file in en_files:
 
 
 
+"""Merge databases"""
+# df = read_sql(database='files/db/sub_trans_cash', table='sub_translate')
+# print(df.info())
 
+# _df = read_sql(database='sub_trans_cash', table='sub_translate')
+# print(_df.info())
+#
+# df = pd.concat([df, _df])
+# df.drop_duplicates(inplace=True)
+# print(df.info())
+#
+# database = 'files/db/sub_trans_cash'
+# engine = create_engine('sqlite:///{}.db'.format(database), echo=False)
+#
+# df.to_sql('sub_translate', con=engine, if_exists='replace', index=False)
 
 
 
